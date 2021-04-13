@@ -1,4 +1,4 @@
-
+import { IServer } from './Server'
 
 interface Personz {
     firstName: string,

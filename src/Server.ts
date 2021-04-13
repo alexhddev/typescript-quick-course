@@ -1,5 +1,7 @@
+import {  Comp1 } from '@components/Comp1'
 
-interface IServer {
+
+export interface IServer {
 
     startServer(): void
     stopServer(): void
@@ -9,6 +11,7 @@ class Server implements IServer{
 
     public port: number;
     public address: string;
+    public comp1 = new Comp1;
 
     constructor(port: number, address: string){
         this.port = port;
