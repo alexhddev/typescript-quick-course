@@ -1,10 +1,14 @@
 
+interface IServer {
 
+    startServer(): void
+    stopServer(): void
+}
 
-class Server {
+class Server implements IServer{
 
-    private port: number;
-    private address: string;
+    public port: number;
+    public address: string;
 
     constructor(port: number, address: string){
         this.port = port;
@@ -15,7 +19,9 @@ class Server {
         console.log(`Starting server at: ${this.address}: ${this.port}`)
     }
 
+    stopServer(): void {}
+
 }
 
-const someServer = new Server(8080, 'localhost');
+const someServer: IServer = new Server(8080, 'localhost');
 someServer.startServer();
