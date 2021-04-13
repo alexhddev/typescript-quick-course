@@ -1,6 +1,6 @@
 
 
-interface Person {
+interface Personz {
     firstName: string,
     lastName: string,
     job?: job
@@ -10,7 +10,7 @@ interface Person {
 type job = 'Engineer' | 'Programmer'
 
 
-function generateEmail(input: Person, force?: boolean): string | undefined {
+function generateEmail(input: Personz, force?: boolean): string | undefined {
     if (input.isVisitor && !force) {
         return undefined
     } else {
