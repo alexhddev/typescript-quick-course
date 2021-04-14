@@ -1,14 +1,4 @@
 
-function logInvocation(target: Object, propertyKey: string, descriptor: PropertyDescriptor){
-    const className = target.constructor.name;
-    let originalMethod = descriptor.value;
-    descriptor.value = async function(...args: any[]) {
-        console.log(`${className}#${propertyKey} called with ${JSON.stringify(args)}`)
-        const result = await originalMethod.apply(this, args);
-        console.log(`${className}#${propertyKey} returned ${JSON.stringify(result)}`)
-    }
-}
-
 
 export interface IServer {
 
@@ -20,20 +10,24 @@ class Server implements IServer{
 
     public port: number;
     public address: string;
+    public date: string = '';
 
     constructor(port: number, address: string){
         this.port = port;
         this.address = address;
+    //    this.date = ''
     }
 
     async startServer(){
         const data = await this.getData(123);
         console.log(`Starting server at: ${this.address}: ${this.port}`)
+        return function(){
+        //    this.date = 5;
+        }
     }
 
     stopServer(): void {}
 
-    @logInvocation
     async getData(id: number): Promise<string>{
         return 'some SPecial Data'
     }
